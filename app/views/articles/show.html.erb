@@ -2,6 +2,10 @@
 <p>
   <%= @article.body %>
 </p>
+<h1 class="center-align">Comments: <%= @article.comments.count %></h1>
+<div class="divider"></div>
+<%= render partial: 'comments/comment', collection: @article.comments %>
+<%= render partial: 'comments/form' %>
 
 <p><%= link_to "back to articles list", articles_path %></p>
 <p><%= link_to "delete", article_path(@article), data: {confirm: "Are you sure?"}, method: :delete %></p>
