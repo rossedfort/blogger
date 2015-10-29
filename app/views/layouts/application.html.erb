@@ -26,15 +26,21 @@
       <nav class="green">
         <div class="nav-wrapper">
           <a href="#" class="brand-logo center">Blogger</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href="/">Home</a></li>
+            <% if logged_in? %>
+                <%= "Logged in as #{current_user.email}" %>
+                <li><a href= "<%= logout_path %>" >Log Out</a></li>
+            <% else %>
+                <li><a href= "<%= login_path %>" >Log In</a></li>
+            <% end %>
           </ul>
         </div>
       </nav>
     </div>
     <div class="container">
-      <p class="flash"><%= flash.notice %></p>
-      <%= yield %>
+        <p class="flash"><%= flash.notice %></p>
+        <%= yield %>
     </div>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
