@@ -1,6 +1,8 @@
 class AuthorSessionsController < ApplicationController
+  before_filter :require_login, except: [:new, :create, :destroy]
+
   def new
-   end
+  end
 
    def create
      if login(params[:email], params[:password])
